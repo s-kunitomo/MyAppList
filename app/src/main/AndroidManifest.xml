@@ -16,6 +16,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".NameScore"
+            android:label="@string/title_activity_name_score"
+            android:parentActivityName=".MainActivity" >
+        </activity>
+        <activity
+            android:name=".FileData"
+            android:label="@string/title_activity_file_data" >
+        </activity>
+        <activity
+            android:name=".Database"
+            android:label="@string/title_activity_database" >
+        </activity>
+        <provider
+            android:authorities="com.example.shoji.myapplist.mycontentprovider"
+            android:name="com.example.shoji.myapplist.MyContentProvider"
+            android:exported="false">
+        </provider>
     </application>
 
 </manifest>

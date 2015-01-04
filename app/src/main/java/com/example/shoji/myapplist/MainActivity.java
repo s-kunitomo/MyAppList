@@ -1,39 +1,74 @@
 package com.example.shoji.myapplist;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
-public class MainActivity extends ActionBarActivity {
-
+public class MainActivity extends ActionBarActivity
+{
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
 
+        // ①データの準備
+        List<String> items = new ArrayList<>();
+        items.add("おみくじ");
+        items.add("姓名判断");
+        items.add("ストップウォッチ");
+        items.add("ブラウザ");
+        items.add("クイズ");
+        items.add("メモ");
+        items.add("ファイルデータ");
+        items.add("データベース");
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
+        // ②Adapter
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, items);
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+        // ③Adapterを適用
+        final ListView myListView = (ListView)findViewById(R.id.myListView);
+        myListView.setAdapter(arrayAdapter);
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+        // ④クリック時のイベントハンドラを登録
+        myListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+            {
+                String s = myListView.getItemAtPosition(position).toString();
 
-        return super.onOptionsItemSelected(item);
+                if (s.equals("おみくじ"))
+                {
+                    Intent intent = new Intent(MainActivity.this, NameScore.class);
+                    startActivity(intent);
+                }
+                else if(s.equals("ファイルデータ"))
+                {
+                    Intent intent = new Intent(MainActivity.this, FileData.class);
+                    startActivity(intent);
+                }
+                else if(s.equals("データベース"))
+                {
+                    Intent intent = new Intent(MainActivity.this, Database.class);
+                    startActivity(intent);
+                }
+                else
+                {
+                    Toast.makeText(MainActivity.this, s, Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 }
