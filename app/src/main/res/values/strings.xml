@@ -7,5 +7,6 @@
     <string name="title_activity_name_score">NameScore</string>
     <string name="title_activity_file_data">FileData</string>
     <string name="title_activity_database">Database</string>
+    <string name="title_activity_web_api">WebApi</string>
 
 </resources>

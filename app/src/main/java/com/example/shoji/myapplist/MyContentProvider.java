@@ -10,6 +10,7 @@ import android.net.Uri;
 
 /**
  * Created by Shoji on 2015/01/04.
+ * Used in Database.java
  */
 public class MyContentProvider extends ContentProvider
 {

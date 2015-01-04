@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.shoji.myapplist" >
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -29,10 +31,15 @@
             android:name=".Database"
             android:label="@string/title_activity_database" >
         </activity>
+        <activity
+            android:name=".WebApi"
+            android:label="@string/title_activity_web_api" >
+        </activity>
+
         <provider
+            android:name=".MyContentProvider"
             android:authorities="com.example.shoji.myapplist.mycontentprovider"
-            android:name="com.example.shoji.myapplist.MyContentProvider"
-            android:exported="false">
+            android:exported="false" >
         </provider>
     </application>
 

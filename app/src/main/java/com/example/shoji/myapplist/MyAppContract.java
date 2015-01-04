@@ -4,6 +4,7 @@ import android.provider.BaseColumns;
 
 /**
  * Created by Shoji on 2015/01/04.
+ * Used in Database.java
  */
 public final class MyAppContract
 {

@@ -33,6 +33,7 @@ public class MainActivity extends ActionBarActivity
         items.add("メモ");
         items.add("ファイルデータ");
         items.add("データベース");
+        items.add("WebAPI");
 
         // ②Adapter
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, items);
@@ -62,6 +63,11 @@ public class MainActivity extends ActionBarActivity
                 else if(s.equals("データベース"))
                 {
                     Intent intent = new Intent(MainActivity.this, Database.class);
+                    startActivity(intent);
+                }
+                else if(s.equals("WebAPI"))
+                {
+                    Intent intent = new Intent(MainActivity.this, WebApi.class);
                     startActivity(intent);
                 }
                 else
